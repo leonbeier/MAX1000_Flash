@@ -49,7 +49,7 @@ module NIOSDuino_Core_sysid_qsys_0 (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1623328152 : 17149200;
+  assign readdata = address ? 1623333874 : 17149200;
 
 endmodule
 

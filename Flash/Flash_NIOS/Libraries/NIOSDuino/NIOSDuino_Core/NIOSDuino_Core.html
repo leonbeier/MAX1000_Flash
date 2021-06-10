@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2021.06.10.14:29:13</td>
+    <td class="l">2021.06.10.16:04:34</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -147,7 +147,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <tr>
     <td class="slavem">avl_csr&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>01000000</td>
-    <td class="addr"><span style="color:#989898">0x</span>01000000</td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avl_mem&#160;</td>
@@ -243,7 +243,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <tr>
     <td class="slaveb">control_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>01111130</td>
-    <td class="addr"><span style="color:#989898">0x</span>01111130</td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -327,11 +327,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_nios2_qsys_0">nios2_qsys_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="14">intel_generic_serial_flash_interface_top_0</td>
+      <td class="main" rowspan="12">intel_generic_serial_flash_interface_top_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avl_csr</td>
@@ -341,12 +341,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;avl_mem</td>
-     </tr>
-     <tr>
-      <td class="from">instruction_master&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;avl_csr</td>
      </tr>
      <tr>
       <td class="from">instruction_master&#160;&#160;</td>
@@ -401,7 +395,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">gui_use_asmiblock</td>
-        <td class="parametervalue">false</td>
+        <td class="parametervalue">true</td>
        </tr>
        <tr>
         <td class="parametername">gui_use_gpio</td>
@@ -425,7 +419,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_1</td>
-        <td class="parametervalue">16</td>
+        <td class="parametervalue">1</td>
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_2</td>
@@ -437,15 +431,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_4</td>
-        <td class="parametervalue">0</td>
+        <td class="parametervalue">139264</td>
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_5</td>
-        <td class="parametervalue">3</td>
+        <td class="parametervalue">1771</td>
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_6</td>
-        <td class="parametervalue">28674</td>
+        <td class="parametervalue">1282</td>
        </tr>
        <tr>
         <td class="parametername">DEFAULT_VALUE_REG_7</td>
@@ -676,7 +670,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll">pll</a>
       </td>
       <td class="from">c0&#160;&#160;</td>
-      <td class="main" rowspan="65">nios2_qsys_0</td>
+      <td class="main" rowspan="61">nios2_qsys_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -723,7 +717,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_intel_generic_serial_flash_interface_top_0">intel_generic_serial_flash_interface_top_0</a>
       </td>
      </tr>
@@ -750,16 +744,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;avl_csr</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">instruction_master&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
       <td class="to">&#160;&#160;avl_mem</td>
      </tr>
      <tr style="height:6px">
@@ -769,19 +753,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="6">
+      <td class="neighbor" rowspan="4">
        <a href="#module_sysid_qsys_0">sysid_qsys_0</a>
       </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;control_slave</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">instruction_master&#160;&#160;</td>
      </tr>
      <tr>
       <td></td>
@@ -1219,7 +1193,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetSlave</td>
-        <td class="parametervalue">intel_generic_serial_flash_interface_top_0.avl_csr</td>
+        <td class="parametervalue">intel_generic_serial_flash_interface_top_0.avl_mem</td>
        </tr>
        <tr>
         <td class="parametername">mmu_TLBMissExcSlave</td>
@@ -1579,7 +1553,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetAbsoluteAddr</td>
-        <td class="parametervalue">16777216</td>
+        <td class="parametervalue">0</td>
        </tr>
        <tr>
         <td class="parametername">exceptionAbsoluteAddr</td>
@@ -1695,7 +1669,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='intel_generic_serial_flash_interface_top_0.avl_mem' start='0x0' end='0x800000' type='intel_generic_serial_flash_interface_top.avl_mem' /&gt;&lt;slave name='sdram_controller_0.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='intel_generic_serial_flash_interface_top_0.avl_csr' start='0x1000000' end='0x1000100' type='intel_generic_serial_flash_interface_top.avl_csr' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x1108000' end='0x1110000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_qsys_0.debug_mem_slave' start='0x1110800' end='0x1111000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x11110A0' end='0x11110C0' type='altera_avalon_uart.s1' /&gt;&lt;slave name='pll.pll_slave' start='0x1111110' end='0x1111120' type='altpll.pll_slave' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0x1111130' end='0x1111138' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='intel_generic_serial_flash_interface_top_0.avl_mem' start='0x0' end='0x800000' type='intel_generic_serial_flash_interface_top.avl_mem' /&gt;&lt;slave name='sdram_controller_0.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x1108000' end='0x1110000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_qsys_0.debug_mem_slave' start='0x1110800' end='0x1111000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='uart_0.s1' start='0x11110A0' end='0x11110C0' type='altera_avalon_uart.s1' /&gt;&lt;slave name='pll.pll_slave' start='0x1111110' end='0x1111120' type='altpll.pll_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -1920,7 +1894,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_ADDR</td>
-        <td class="parametervalue">0x01000000</td>
+        <td class="parametervalue">0x00000000</td>
        </tr>
       </table>
      </td>
@@ -3589,17 +3563,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="6">
+      <td class="neighbor" rowspan="4">
        <a href="#module_nios2_qsys_0">nios2_qsys_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="12">sysid_qsys_0</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;control_slave</td>
-     </tr>
-     <tr>
-      <td class="from">instruction_master&#160;&#160;</td>
+      <td class="main" rowspan="10">sysid_qsys_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;control_slave</td>
@@ -3649,7 +3617,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1623328152</td>
+        <td class="parametervalue">1623333874</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -3674,7 +3642,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1623328152</td>
+        <td class="parametervalue">1623333874</td>
        </tr>
       </table>
      </td>
@@ -4075,8 +4043,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0,01 seconds</td>
-    <td class="r">rendering took 0,11 seconds</td>
+    <td class="l">generation took 0,02 seconds</td>
+    <td class="r">rendering took 0,13 seconds</td>
    </tr>
   </table>
  </body>

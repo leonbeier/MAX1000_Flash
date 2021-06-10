@@ -1,8 +1,33 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst unsaved.clk_0 -pg 1 -lvl 1 -y 30
-preplace inst unsaved -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)unsaved.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc EXPORT<net_container>unsaved</net_container>(SLAVE)unsaved.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-levelinfo -pg 1 0 50 270
-levelinfo -hier unsaved 60 90 260
+preplace inst jtag_gen_flash.master_0.p2b_adapter -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.xip_addr_adaption -pg 1
+preplace inst jtag_gen_flash.master_0.clk_src -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.reset_bridge -pg 1
+preplace inst jtag_gen_flash.master_0.b2p -pg 1
+preplace inst jtag_gen_flash.master_0.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.xip_controller -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0 -pg 1 -lvl 3 -y 100
+preplace inst jtag_gen_flash.master_0.clk_rst -pg 1
+preplace inst jtag_gen_flash.master_0 -pg 1 -lvl 2 -y 50
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.clk_bridge -pg 1
+preplace inst jtag_gen_flash.master_0.transacto -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.serial_flash_inf_cmd_gen_inst -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.merlin_demultiplexer_0 -pg 1
+preplace inst jtag_gen_flash -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst jtag_gen_flash.master_0.b2p_adapter -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.qspi_inf_inst -pg 1
+preplace inst jtag_gen_flash.clk_0 -pg 1 -lvl 1 -y 50
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.multiplexer -pg 1
+preplace inst jtag_gen_flash.intel_generic_serial_flash_interface_top_0.csr_controller -pg 1
+preplace inst jtag_gen_flash.master_0.p2b -pg 1
+preplace inst jtag_gen_flash.master_0.fifo -pg 1
+preplace inst jtag_gen_flash.master_0.timing_adt -pg 1
+preplace netloc FAN_OUT<net_container>jtag_gen_flash</net_container>(SLAVE)intel_generic_serial_flash_interface_top_0.avl_csr,(MASTER)master_0.master,(SLAVE)intel_generic_serial_flash_interface_top_0.avl_mem) 1 2 1 580
+preplace netloc EXPORT<net_container>jtag_gen_flash</net_container>(SLAVE)intel_generic_serial_flash_interface_top_0.qspi_pins,(SLAVE)jtag_gen_flash.qspi_pins) 1 0 3 NJ 170 NJ 170 NJ
+preplace netloc FAN_OUT<net_container>jtag_gen_flash</net_container>(MASTER)clk_0.clk_reset,(SLAVE)intel_generic_serial_flash_interface_top_0.reset,(SLAVE)master_0.clk_reset) 1 1 2 280 150 540
+preplace netloc EXPORT<net_container>jtag_gen_flash</net_container>(SLAVE)jtag_gen_flash.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>jtag_gen_flash</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)jtag_gen_flash.reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>jtag_gen_flash</net_container>(SLAVE)intel_generic_serial_flash_interface_top_0.clk,(MASTER)clk_0.clk,(SLAVE)master_0.clk) 1 1 2 300 130 560
+levelinfo -pg 1 0 70 870
+levelinfo -hier jtag_gen_flash 80 110 380 660 790

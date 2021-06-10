@@ -6,7 +6,7 @@
    version="1.0"
    description=""
    tags=""
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element clk_0
@@ -47,7 +47,7 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="" />
+ <parameter name="projectName">MAX1000_Flashloader.qpf</parameter>
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
@@ -78,12 +78,12 @@
   <parameter name="CHIP_SELS" value="1" />
   <parameter name="DEBUG_OPTION" value="0" />
   <parameter name="DEFAULT_VALUE_REG_0" value="1" />
-  <parameter name="DEFAULT_VALUE_REG_1" value="16" />
+  <parameter name="DEFAULT_VALUE_REG_1" value="1" />
   <parameter name="DEFAULT_VALUE_REG_2" value="0" />
   <parameter name="DEFAULT_VALUE_REG_3" value="0" />
-  <parameter name="DEFAULT_VALUE_REG_4" value="0" />
-  <parameter name="DEFAULT_VALUE_REG_5" value="3" />
-  <parameter name="DEFAULT_VALUE_REG_6" value="28674" />
+  <parameter name="DEFAULT_VALUE_REG_4" value="139264" />
+  <parameter name="DEFAULT_VALUE_REG_5" value="1771" />
+  <parameter name="DEFAULT_VALUE_REG_6" value="1282" />
   <parameter name="DEFAULT_VALUE_REG_7" value="6149" />
   <parameter name="DEVICE_DENSITY" value="64" />
   <parameter name="DEVICE_FAMILY" value="MAX 10" />
@@ -94,7 +94,7 @@
   <parameter name="PIPE_MUX_CMD" value="0" />
   <parameter name="PIPE_XIP" value="0" />
   <parameter name="USE_CHIP_SEL_FROM_CSR" value="1" />
-  <parameter name="gui_use_asmiblock" value="false" />
+  <parameter name="gui_use_asmiblock" value="true" />
   <parameter name="gui_use_gpio" value="true" />
  </module>
  <module

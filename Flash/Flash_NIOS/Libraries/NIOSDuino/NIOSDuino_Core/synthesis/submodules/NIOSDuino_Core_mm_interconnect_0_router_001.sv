@@ -44,7 +44,7 @@
 
 module NIOSDuino_Core_mm_interconnect_0_router_001_default_decode
   #(
-     parameter DEFAULT_CHANNEL = 1,
+     parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
                DEFAULT_DESTID = 1 
@@ -136,18 +136,16 @@ module NIOSDuino_Core_mm_interconnect_0_router_001
     // -------------------------------------------------------
     localparam PAD0 = log2ceil(64'h800000 - 64'h0); 
     localparam PAD1 = log2ceil(64'h1000000 - 64'h800000); 
-    localparam PAD2 = log2ceil(64'h1000100 - 64'h1000000); 
-    localparam PAD3 = log2ceil(64'h1110000 - 64'h1108000); 
-    localparam PAD4 = log2ceil(64'h1111000 - 64'h1110800); 
-    localparam PAD5 = log2ceil(64'h11110c0 - 64'h11110a0); 
-    localparam PAD6 = log2ceil(64'h1111120 - 64'h1111110); 
-    localparam PAD7 = log2ceil(64'h1111138 - 64'h1111130); 
+    localparam PAD2 = log2ceil(64'h1110000 - 64'h1108000); 
+    localparam PAD3 = log2ceil(64'h1111000 - 64'h1110800); 
+    localparam PAD4 = log2ceil(64'h11110c0 - 64'h11110a0); 
+    localparam PAD5 = log2ceil(64'h1111120 - 64'h1111110); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h1111138;
+    localparam ADDR_RANGE = 64'h1111120;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -176,11 +174,6 @@ module NIOSDuino_Core_mm_interconnect_0_router_001
 
 
 
-    // -------------------------------------------------------
-    // Write and read transaction signals
-    // -------------------------------------------------------
-    wire read_transaction;
-    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     NIOSDuino_Core_mm_interconnect_0_router_001_default_decode the_default_decode(
@@ -202,50 +195,38 @@ module NIOSDuino_Core_mm_interconnect_0_router_001
 
     // ( 0x0 .. 0x800000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 25'h0   ) begin
-            src_channel = 11'b00000010;
+            src_channel = 11'b000001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x800000 .. 0x1000000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 25'h800000   ) begin
-            src_channel = 11'b01000000;
+            src_channel = 11'b010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 
-    // ( 0x1000000 .. 0x1000100 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 25'h1000000   ) begin
-            src_channel = 11'b00000001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
-    end
-
     // ( 0x1108000 .. 0x1110000 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 25'h1108000   ) begin
-            src_channel = 11'b00100000;
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 25'h1108000   ) begin
+            src_channel = 11'b001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
     // ( 0x1110800 .. 0x1111000 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 25'h1110800   ) begin
-            src_channel = 11'b00001000;
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 25'h1110800   ) begin
+            src_channel = 11'b000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
     // ( 0x11110a0 .. 0x11110c0 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 25'h11110a0   ) begin
-            src_channel = 11'b10000000;
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 25'h11110a0   ) begin
+            src_channel = 11'b100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
     // ( 0x1111110 .. 0x1111120 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 25'h1111110   ) begin
-            src_channel = 11'b00010000;
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 25'h1111110   ) begin
+            src_channel = 11'b000100;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
-    end
-
-    // ( 0x1111130 .. 0x1111138 )
-    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 25'h1111130  && read_transaction  ) begin
-            src_channel = 11'b00000100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
 end

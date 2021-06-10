@@ -30,7 +30,7 @@
 //   output_name:         NIOSDuino_Core_mm_interconnect_0_cmd_demux_001
 //   ST_DATA_W:           115
 //   ST_CHANNEL_W:        11
-//   NUM_OUTPUTS:         8
+//   NUM_OUTPUTS:         6
 //   VALID_WIDTH:         1
 // ------------------------------------------
 
@@ -97,20 +97,6 @@ module NIOSDuino_Core_mm_interconnect_0_cmd_demux_001
     output reg                      src5_endofpacket,
     input                           src5_ready,
 
-    output reg                      src6_valid,
-    output reg [115-1    : 0] src6_data, // ST_DATA_W=115
-    output reg [11-1 : 0] src6_channel, // ST_CHANNEL_W=11
-    output reg                      src6_startofpacket,
-    output reg                      src6_endofpacket,
-    input                           src6_ready,
-
-    output reg                      src7_valid,
-    output reg [115-1    : 0] src7_data, // ST_DATA_W=115
-    output reg [11-1 : 0] src7_channel, // ST_CHANNEL_W=11
-    output reg                      src7_startofpacket,
-    output reg                      src7_endofpacket,
-    input                           src7_ready,
-
 
     // -------------------
     // Clock & Reset
@@ -122,7 +108,7 @@ module NIOSDuino_Core_mm_interconnect_0_cmd_demux_001
 
 );
 
-    localparam NUM_OUTPUTS = 8;
+    localparam NUM_OUTPUTS = 6;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -171,20 +157,6 @@ module NIOSDuino_Core_mm_interconnect_0_cmd_demux_001
 
         src5_valid         = sink_channel[5] && sink_valid;
 
-        src6_data          = sink_data;
-        src6_startofpacket = sink_startofpacket;
-        src6_endofpacket   = sink_endofpacket;
-        src6_channel       = sink_channel >> NUM_OUTPUTS;
-
-        src6_valid         = sink_channel[6] && sink_valid;
-
-        src7_data          = sink_data;
-        src7_startofpacket = sink_startofpacket;
-        src7_endofpacket   = sink_endofpacket;
-        src7_channel       = sink_channel >> NUM_OUTPUTS;
-
-        src7_valid         = sink_channel[7] && sink_valid;
-
     end
 
     // -------------------
@@ -196,10 +168,8 @@ module NIOSDuino_Core_mm_interconnect_0_cmd_demux_001
     assign ready_vector[3] = src3_ready;
     assign ready_vector[4] = src4_ready;
     assign ready_vector[5] = src5_ready;
-    assign ready_vector[6] = src6_ready;
-    assign ready_vector[7] = src7_ready;
 
-    assign sink_ready = |(sink_channel & {{3{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{5{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

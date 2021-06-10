@@ -39,8 +39,8 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
-//   NUM_INPUTS:          8
-//   ARBITRATION_SHARES:  1 1 1 1 1 1 1 1
+//   NUM_INPUTS:          6
+//   ARBITRATION_SHARES:  1 1 1 1 1 1
 //   ARBITRATION_SCHEME   "no-arb"
 //   PIPELINE_ARB:        0
 //   PKT_TRANS_LOCK:      65 (arbitration locking enabled)
@@ -95,20 +95,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     input                       sink5_endofpacket,
     output                      sink5_ready,
 
-    input                       sink6_valid,
-    input [115-1   : 0]  sink6_data,
-    input [11-1: 0]  sink6_channel,
-    input                       sink6_startofpacket,
-    input                       sink6_endofpacket,
-    output                      sink6_ready,
-
-    input                       sink7_valid,
-    input [115-1   : 0]  sink7_data,
-    input [11-1: 0]  sink7_channel,
-    input                       sink7_startofpacket,
-    input                       sink7_endofpacket,
-    output                      sink7_ready,
-
 
     // ----------------------
     // Source
@@ -127,7 +113,7 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     input reset
 );
     localparam PAYLOAD_W        = 115 + 11 + 2;
-    localparam NUM_INPUTS       = 8;
+    localparam NUM_INPUTS       = 6;
     localparam SHARE_COUNTER_W  = 1;
     localparam PIPELINE_ARB     = 0;
     localparam ST_DATA_W        = 115;
@@ -153,8 +139,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     wire [PAYLOAD_W - 1 : 0] sink3_payload;
     wire [PAYLOAD_W - 1 : 0] sink4_payload;
     wire [PAYLOAD_W - 1 : 0] sink5_payload;
-    wire [PAYLOAD_W - 1 : 0] sink6_payload;
-    wire [PAYLOAD_W - 1 : 0] sink7_payload;
 
     assign valid[0] = sink0_valid;
     assign valid[1] = sink1_valid;
@@ -162,8 +146,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     assign valid[3] = sink3_valid;
     assign valid[4] = sink4_valid;
     assign valid[5] = sink5_valid;
-    assign valid[6] = sink6_valid;
-    assign valid[7] = sink7_valid;
 
 
     // ------------------------------------------
@@ -179,8 +161,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
       lock[3] = sink3_data[65];
       lock[4] = sink4_data[65];
       lock[5] = sink5_data[65];
-      lock[6] = sink6_data[65];
-      lock[7] = sink7_data[65];
     end
 
     assign last_cycle = src_valid & src_ready & src_endofpacket & ~(|(lock & grant));
@@ -217,16 +197,12 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     // 3      |      1       |  0
     // 4      |      1       |  0
     // 5      |      1       |  0
-    // 6      |      1       |  0
-    // 7      |      1       |  0
      wire [SHARE_COUNTER_W - 1 : 0] share_0 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_1 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_2 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_3 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_4 = 1'd0;
      wire [SHARE_COUNTER_W - 1 : 0] share_5 = 1'd0;
-     wire [SHARE_COUNTER_W - 1 : 0] share_6 = 1'd0;
-     wire [SHARE_COUNTER_W - 1 : 0] share_7 = 1'd0;
 
     // ------------------------------------------
     // Choose the share value corresponding to the grant.
@@ -239,9 +215,7 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     share_2 & { SHARE_COUNTER_W {next_grant[2]} } |
     share_3 & { SHARE_COUNTER_W {next_grant[3]} } |
     share_4 & { SHARE_COUNTER_W {next_grant[4]} } |
-    share_5 & { SHARE_COUNTER_W {next_grant[5]} } |
-    share_6 & { SHARE_COUNTER_W {next_grant[6]} } |
-    share_7 & { SHARE_COUNTER_W {next_grant[7]} };
+    share_5 & { SHARE_COUNTER_W {next_grant[5]} };
     end
 
     // ------------------------------------------
@@ -315,17 +289,11 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
 
     wire final_packet_5 = 1'b1;
 
-    wire final_packet_6 = 1'b1;
-
-    wire final_packet_7 = 1'b1;
-
 
     // ------------------------------------------
     // Concatenate all final_packet signals (wire or reg) into a handy vector.
     // ------------------------------------------
     wire [NUM_INPUTS - 1 : 0] final_packet = {
-    final_packet_7,
-    final_packet_6,
     final_packet_5,
     final_packet_4,
     final_packet_3,
@@ -421,8 +389,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     assign sink3_ready = src_ready && grant[3];
     assign sink4_ready = src_ready && grant[4];
     assign sink5_ready = src_ready && grant[5];
-    assign sink6_ready = src_ready && grant[6];
-    assign sink7_ready = src_ready && grant[7];
 
     assign src_valid = |(grant & valid);
 
@@ -433,9 +399,7 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
       sink2_payload & {PAYLOAD_W {grant[2]} } |
       sink3_payload & {PAYLOAD_W {grant[3]} } |
       sink4_payload & {PAYLOAD_W {grant[4]} } |
-      sink5_payload & {PAYLOAD_W {grant[5]} } |
-      sink6_payload & {PAYLOAD_W {grant[6]} } |
-      sink7_payload & {PAYLOAD_W {grant[7]} };
+      sink5_payload & {PAYLOAD_W {grant[5]} };
     end
 
     // ------------------------------------------
@@ -454,10 +418,6 @@ module NIOSDuino_Core_mm_interconnect_0_rsp_mux_001
     sink4_startofpacket,sink4_endofpacket};
     assign sink5_payload = {sink5_channel,sink5_data,
     sink5_startofpacket,sink5_endofpacket};
-    assign sink6_payload = {sink6_channel,sink6_data,
-    sink6_startofpacket,sink6_endofpacket};
-    assign sink7_payload = {sink7_channel,sink7_data,
-    sink7_startofpacket,sink7_endofpacket};
 
     assign {src_channel,src_data,src_startofpacket,src_endofpacket} = src_payload;
 endmodule

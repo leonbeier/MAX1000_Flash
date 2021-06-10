@@ -8,24 +8,24 @@ use IEEE.numeric_std.all;
 
 entity NIOSDuino_Core is
 	port (
-		clk_in_clk     : in    std_logic                     := '0';             --    clk_in.clk
-		pio_export     : inout std_logic_vector(15 downto 0) := (others => '0'); --       pio.export
-		qspi_pins_dclk : out   std_logic;                                        -- qspi_pins.dclk
-		qspi_pins_ncs  : out   std_logic;                                        --          .ncs
-		qspi_pins_data : inout std_logic_vector(3 downto 0)  := (others => '0'); --          .data
-		reset_reset_n  : in    std_logic                     := '0';             --     reset.reset_n
-		sdram_addr     : out   std_logic_vector(11 downto 0);                    --     sdram.addr
-		sdram_ba       : out   std_logic_vector(1 downto 0);                     --          .ba
-		sdram_cas_n    : out   std_logic;                                        --          .cas_n
-		sdram_cke      : out   std_logic;                                        --          .cke
-		sdram_cs_n     : out   std_logic;                                        --          .cs_n
-		sdram_dq       : inout std_logic_vector(15 downto 0) := (others => '0'); --          .dq
-		sdram_dqm      : out   std_logic_vector(1 downto 0);                     --          .dqm
-		sdram_ras_n    : out   std_logic;                                        --          .ras_n
-		sdram_we_n     : out   std_logic;                                        --          .we_n
-		sdram_clk_clk  : out   std_logic;                                        -- sdram_clk.clk
-		uart_rxd       : in    std_logic                     := '0';             --      uart.rxd
-		uart_txd       : out   std_logic                                         --          .txd
+		clk_in_clk    : in    std_logic                     := '0';             --    clk_in.clk
+		pio_export    : inout std_logic_vector(15 downto 0) := (others => '0'); --       pio.export
+		qspi_dclk     : out   std_logic;                                        --      qspi.dclk
+		qspi_ncs      : out   std_logic;                                        --          .ncs
+		qspi_data     : inout std_logic_vector(3 downto 0)  := (others => '0'); --          .data
+		reset_reset_n : in    std_logic                     := '0';             --     reset.reset_n
+		sdram_addr    : out   std_logic_vector(11 downto 0);                    --     sdram.addr
+		sdram_ba      : out   std_logic_vector(1 downto 0);                     --          .ba
+		sdram_cas_n   : out   std_logic;                                        --          .cas_n
+		sdram_cke     : out   std_logic;                                        --          .cke
+		sdram_cs_n    : out   std_logic;                                        --          .cs_n
+		sdram_dq      : inout std_logic_vector(15 downto 0) := (others => '0'); --          .dq
+		sdram_dqm     : out   std_logic_vector(1 downto 0);                     --          .dqm
+		sdram_ras_n   : out   std_logic;                                        --          .ras_n
+		sdram_we_n    : out   std_logic;                                        --          .we_n
+		sdram_clk_clk : out   std_logic;                                        -- sdram_clk.clk
+		uart_rxd      : in    std_logic                     := '0';             --      uart.rxd
+		uart_txd      : out   std_logic                                         --          .txd
 	);
 end entity NIOSDuino_Core;
 
@@ -663,9 +663,9 @@ begin
 			avl_mem_byteenable    => mm_interconnect_0_intel_generic_serial_flash_interface_top_0_avl_mem_byteenable,    --          .byteenable
 			clk_clk               => pll_c0_clk,                                                                         --       clk.clk
 			reset_reset           => reset_reset_n_ports_inv,                                                            --     reset.reset
-			qspi_pins_dclk        => qspi_pins_dclk,                                                                     -- qspi_pins.dclk
-			qspi_pins_ncs         => qspi_pins_ncs,                                                                      --          .ncs
-			qspi_pins_data        => qspi_pins_data                                                                      --          .data
+			qspi_pins_dclk        => qspi_dclk,                                                                          -- qspi_pins.dclk
+			qspi_pins_ncs         => qspi_ncs,                                                                           --          .ncs
+			qspi_pins_data        => qspi_data                                                                           --          .data
 		);
 
 	jtag_uart_0 : component NIOSDuino_Core_jtag_uart_0
