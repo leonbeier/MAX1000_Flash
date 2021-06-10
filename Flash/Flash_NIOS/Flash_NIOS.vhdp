@@ -10,6 +10,9 @@ Main
     NIOS_sdram_ras_n   : OUT STD_LOGIC;
     NIOS_sdram_we_n    : OUT STD_LOGIC;
     NIOS_sdram_clk_clk : OUT STD_LOGIC;
+    NIOS_qspi_dclk     : OUT   STD_LOGIC;                                        
+    NIOS_qspi_ncs      : OUT   STD_LOGIC;                                     
+    NIOS_qspi_data     : INOUT STD_LOGIC_VECTOR(3 downto 0)  := (others => 'X');
     NIOS_pio_export    : INOUT STD_LOGIC_VECTOR (15 downto 0) := (others => 'X');
     NIOS_uart_rxd      : IN STD_LOGIC := 'X';
     NIOS_uart_txd      : OUT STD_LOGIC;
@@ -28,6 +31,9 @@ Main
         sdram_ras_n   => NIOS_sdram_ras_n,
         sdram_we_n    => NIOS_sdram_we_n,
         sdram_clk_clk => NIOS_sdram_clk_clk,
+        qspi_dclk     => NIOS_qspi_dclk,
+        qspi_ncs      => NIOS_qspi_ncs,
+        qspi_data     => NIOS_qspi_data,
         pio_export    => NIOS_pio_export,
         uart_rxd      => NIOS_uart_rxd,
         uart_txd      => NIOS_uart_txd,

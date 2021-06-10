@@ -1,0 +1,202 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 256 480)
+	(text "NIOSDuino_Core" (rect 79 -1 149 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 464 20 476)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk_in_clk" (rect 0 0 38 12)(font "Arial" (font_size 8)))
+		(text "clk_in_clk" (rect 4 61 64 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 96 72)(line_width 1))
+	)
+	(port
+		(pt 0 224)
+		(input)
+		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "reset_reset_n" (rect 4 213 82 224)(font "Arial" (font_size 8)))
+		(line (pt 0 224)(pt 96 224)(line_width 1))
+	)
+	(port
+		(pt 0 432)
+		(input)
+		(text "uart_rxd" (rect 0 0 34 12)(font "Arial" (font_size 8)))
+		(text "uart_rxd" (rect 4 421 52 432)(font "Arial" (font_size 8)))
+		(line (pt 0 432)(pt 96 432)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(output)
+		(text "qspi_dclk" (rect 0 0 36 12)(font "Arial" (font_size 8)))
+		(text "qspi_dclk" (rect 4 141 58 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 96 152)(line_width 1))
+	)
+	(port
+		(pt 0 168)
+		(output)
+		(text "qspi_ncs" (rect 0 0 35 12)(font "Arial" (font_size 8)))
+		(text "qspi_ncs" (rect 4 157 52 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 96 168)(line_width 1))
+	)
+	(port
+		(pt 0 264)
+		(output)
+		(text "sdram_addr[11..0]" (rect 0 0 71 12)(font "Arial" (font_size 8)))
+		(text "sdram_addr[11..0]" (rect 4 253 106 264)(font "Arial" (font_size 8)))
+		(line (pt 0 264)(pt 96 264)(line_width 3))
+	)
+	(port
+		(pt 0 280)
+		(output)
+		(text "sdram_ba[1..0]" (rect 0 0 60 12)(font "Arial" (font_size 8)))
+		(text "sdram_ba[1..0]" (rect 4 269 88 280)(font "Arial" (font_size 8)))
+		(line (pt 0 280)(pt 96 280)(line_width 3))
+	)
+	(port
+		(pt 0 296)
+		(output)
+		(text "sdram_cas_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "sdram_cas_n" (rect 4 285 70 296)(font "Arial" (font_size 8)))
+		(line (pt 0 296)(pt 96 296)(line_width 1))
+	)
+	(port
+		(pt 0 312)
+		(output)
+		(text "sdram_cke" (rect 0 0 46 12)(font "Arial" (font_size 8)))
+		(text "sdram_cke" (rect 4 301 58 312)(font "Arial" (font_size 8)))
+		(line (pt 0 312)(pt 96 312)(line_width 1))
+	)
+	(port
+		(pt 0 328)
+		(output)
+		(text "sdram_cs_n" (rect 0 0 51 12)(font "Arial" (font_size 8)))
+		(text "sdram_cs_n" (rect 4 317 64 328)(font "Arial" (font_size 8)))
+		(line (pt 0 328)(pt 96 328)(line_width 1))
+	)
+	(port
+		(pt 0 360)
+		(output)
+		(text "sdram_dqm[1..0]" (rect 0 0 68 12)(font "Arial" (font_size 8)))
+		(text "sdram_dqm[1..0]" (rect 4 349 94 360)(font "Arial" (font_size 8)))
+		(line (pt 0 360)(pt 96 360)(line_width 3))
+	)
+	(port
+		(pt 0 376)
+		(output)
+		(text "sdram_ras_n" (rect 0 0 55 12)(font "Arial" (font_size 8)))
+		(text "sdram_ras_n" (rect 4 365 70 376)(font "Arial" (font_size 8)))
+		(line (pt 0 376)(pt 96 376)(line_width 1))
+	)
+	(port
+		(pt 0 392)
+		(output)
+		(text "sdram_we_n" (rect 0 0 53 12)(font "Arial" (font_size 8)))
+		(text "sdram_we_n" (rect 4 381 64 392)(font "Arial" (font_size 8)))
+		(line (pt 0 392)(pt 96 392)(line_width 1))
+	)
+	(port
+		(pt 256 72)
+		(output)
+		(text "sdram_clk_clk" (rect 0 0 59 12)(font "Arial" (font_size 8)))
+		(text "sdram_clk_clk" (rect 184 61 262 72)(font "Arial" (font_size 8)))
+		(line (pt 256 72)(pt 160 72)(line_width 1))
+	)
+	(port
+		(pt 0 448)
+		(output)
+		(text "uart_txd" (rect 0 0 33 12)(font "Arial" (font_size 8)))
+		(text "uart_txd" (rect 4 437 52 448)(font "Arial" (font_size 8)))
+		(line (pt 0 448)(pt 96 448)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(bidir)
+		(text "pio_export[15..0]" (rect 0 0 64 12)(font "Arial" (font_size 8)))
+		(text "pio_export[15..0]" (rect 4 101 106 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 96 112)(line_width 3))
+	)
+	(port
+		(pt 0 184)
+		(bidir)
+		(text "qspi_data[3..0]" (rect 0 0 57 12)(font "Arial" (font_size 8)))
+		(text "qspi_data[3..0]" (rect 4 173 94 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 96 184)(line_width 3))
+	)
+	(port
+		(pt 0 344)
+		(bidir)
+		(text "sdram_dq[15..0]" (rect 0 0 64 12)(font "Arial" (font_size 8)))
+		(text "sdram_dq[15..0]" (rect 4 333 94 344)(font "Arial" (font_size 8)))
+		(line (pt 0 344)(pt 96 344)(line_width 3))
+	)
+	(drawing
+		(text "clk_in" (rect 63 43 162 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 101 67 220 144)(font "Arial" (color 0 0 0)))
+		(text "pio" (rect 80 83 178 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 101 107 238 224)(font "Arial" (color 0 0 0)))
+		(text "qspi" (rect 73 123 170 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "dclk" (rect 101 147 226 304)(font "Arial" (color 0 0 0)))
+		(text "ncs" (rect 101 163 220 336)(font "Arial" (color 0 0 0)))
+		(text "data" (rect 101 179 226 368)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 67 195 164 403)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 101 219 244 448)(font "Arial" (color 0 0 0)))
+		(text "sdram" (rect 60 235 150 483)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "addr" (rect 101 259 226 528)(font "Arial" (color 0 0 0)))
+		(text "ba" (rect 101 275 214 560)(font "Arial" (color 0 0 0)))
+		(text "cas_n" (rect 101 291 232 592)(font "Arial" (color 0 0 0)))
+		(text "cke" (rect 101 307 220 624)(font "Arial" (color 0 0 0)))
+		(text "cs_n" (rect 101 323 226 656)(font "Arial" (color 0 0 0)))
+		(text "dq" (rect 101 339 214 688)(font "Arial" (color 0 0 0)))
+		(text "dqm" (rect 101 355 220 720)(font "Arial" (color 0 0 0)))
+		(text "ras_n" (rect 101 371 232 752)(font "Arial" (color 0 0 0)))
+		(text "we_n" (rect 101 387 226 784)(font "Arial" (color 0 0 0)))
+		(text "sdram_clk" (rect 161 43 376 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 145 67 308 144)(font "Arial" (color 0 0 0)))
+		(text "uart" (rect 74 403 172 819)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "rxd" (rect 101 427 220 864)(font "Arial" (color 0 0 0)))
+		(text "txd" (rect 101 443 220 896)(font "Arial" (color 0 0 0)))
+		(text " system " (rect 221 464 490 938)(font "Arial" ))
+		(line (pt 96 32)(pt 160 32)(line_width 1))
+		(line (pt 160 32)(pt 160 464)(line_width 1))
+		(line (pt 96 464)(pt 160 464)(line_width 1))
+		(line (pt 96 32)(pt 96 464)(line_width 1))
+		(line (pt 97 52)(pt 97 76)(line_width 1))
+		(line (pt 98 52)(pt 98 76)(line_width 1))
+		(line (pt 97 92)(pt 97 116)(line_width 1))
+		(line (pt 98 92)(pt 98 116)(line_width 1))
+		(line (pt 97 132)(pt 97 188)(line_width 1))
+		(line (pt 98 132)(pt 98 188)(line_width 1))
+		(line (pt 97 204)(pt 97 228)(line_width 1))
+		(line (pt 98 204)(pt 98 228)(line_width 1))
+		(line (pt 97 244)(pt 97 396)(line_width 1))
+		(line (pt 98 244)(pt 98 396)(line_width 1))
+		(line (pt 159 52)(pt 159 76)(line_width 1))
+		(line (pt 158 52)(pt 158 76)(line_width 1))
+		(line (pt 97 412)(pt 97 452)(line_width 1))
+		(line (pt 98 412)(pt 98 452)(line_width 1))
+		(line (pt 0 0)(pt 256 0)(line_width 1))
+		(line (pt 256 0)(pt 256 480)(line_width 1))
+		(line (pt 0 480)(pt 256 480)(line_width 1))
+		(line (pt 0 0)(pt 0 480)(line_width 1))
+	)
+)

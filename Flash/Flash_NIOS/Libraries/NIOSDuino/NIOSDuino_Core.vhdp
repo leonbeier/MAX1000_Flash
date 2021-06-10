@@ -1,14 +1,14 @@
 /*
     Copyright (c) 2019 Protop Solutions UG. All right reserved.
     
-    Permission is hereby granted, free of charge, to any person obtaining a copy of
-    this hdl code and associated documentation files (the "HDL Code"), to deal in the
-    HDL Code without restriction, including without limitation the rights to use,
+    Permission is hereby granted, free of charge, to any person obtaININg a copy of
+    this hdl code and associated documentation files (the "HDL Code"), to deal IN the
+    HDL Code withOUT restriction, INcludINg withOUT limitation the rights to use,
     copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
     HDL Code, and to permit persons to whom the HDL Code is furnished to do so,
-    subject to the following conditions:
+    subject to the followINg conditions:
 
-    The above copyright notice and this permission notice shall be included in all
+    The above copyright notice and this permission notice shall be INcluded IN all
     copies or substantial portions of the HDL Code.
 
     THE HDL Code IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -19,36 +19,36 @@
     WITH THE HDL Code OR THE USE OR OTHER DEALINGS IN THE HDL Code.
 
     1. Hardware Project:
-    -Add NewComponent of NIOSDuino_Processor in your code
-    -Right click the name "NIOSDuino_Processor" of the NewComponent and click on Create Signals
+    -Add NewComponent of NIOSDuINo_Processor IN your code
+    -Right click the name "NIOSDuINo_Processor" of the NewComponent and click on Create Signals
     -Compile the project (and connect the signals with the FPGA I/Os)
 
     2. Software Project:
-    -Click on Tools/New NIOSDuino Project and the Software folder is created in the project
+    -Click on Tools/New NIOSDuINo Project and the Software folder is created IN the project
 
     3. Program Software:
-    -Go to Software/NIOSDuino/NIOSDuino.cpp and program your code
-    -You can use the Arduino libraries and you can find more information here: https://github.com/dimag0g/nios_duino
+    -Go to Software/NIOSDuINo/NIOSDuINo.cpp and program your code
+    -You can use the ArduINo libraries and you can fINd more INformation here: https://github.com/dimag0g/nios_duINo
     -Click on NIOS/NIOS II Make and Download
 
     For JTAG UART:
-    -Click on NIOS/NIOS II JTAG Terminal
+    -Click on NIOS/NIOS II JTAG TermINal
     For Standard UART:
-    -NIOS/BSP Editor -> select uart_0 for stdin/stdout
-    -Use the Serial Monitor with the baudrate you selected when creating the processor (9600 as default)
+    -NIOS/BSP Editor -> select uart_0 for stdIN/stdOUT
+    -Use the Serial Monitor with the baudrate you selected when creatINg the processor (9600 as default)
 
-    4. Non-Volatile Programming:
+    4. Non-Volatile ProgrammINg:
     -Test your code
-    -Use an UART interface instead of JTAG UART: NIOS/BSP Editor -> select uart_0 for stdin/stdout
+    -Use an UART INterface INstead of JTAG UART: NIOS/BSP Editor -> select uart_0 for stdIN/stdOUT
     -Right click the Project and click on "Make Targets"
-    -Double click in your project Libraries/NIOSDuino/NIOSDuino_Core.qsys
-    -Click on finish, close the window and compile the VHDP project again
-    -If you program the FPGA with Programming Mode 2, the software and hardware is saved on the FPGA
+    -Double click IN your project Libraries/NIOSDuINo/NIOSDuINo_Core.qsys
+    -Click on fINish, close the wINdow and compile the VHDP project agaIN
+    -If you program the FPGA with ProgrammINg Mode 2, the software and hardware is saved on the FPGA
  */
 
 Component NIOSDuino_Processor
 (
-    --NIOSDuino Onboard
+    --NIOSDuINo Onboard
     Reset                      : IN    STD_LOGIC := '1';
     sdram_addr                 : OUT   STD_LOGIC_VECTOR(11 downto 0);
     sdram_ba                   : OUT   STD_LOGIC_VECTOR(1 downto 0);
@@ -60,7 +60,10 @@ Component NIOSDuino_Processor
     sdram_ras_n                : OUT   STD_LOGIC;
     sdram_we_n                 : OUT   STD_LOGIC;
     sdram_clk_clk              : OUT   STD_LOGIC;
-    --NIOSDuino External
+    qspi_dclk                  : OUT   STD_LOGIC;                                        -- dclk
+    qspi_ncs                   : OUT   STD_LOGIC;                                        -- ncs
+    qspi_data                  : INOUT STD_LOGIC_VECTOR(3 downto 0)  := (others => 'X')  -- data
+    --NIOSDuINo External
     pio_export                 : INOUT STD_LOGIC_VECTOR(15 downto 0) := (others => 'X');
     uart_rxd                   : IN    STD_LOGIC := 'X';
     uart_txd                   : OUT   STD_LOGIC;
@@ -111,6 +114,12 @@ Component NIOSDuino_Processor
         sdram_dq[15]   => SDRAM_DAT_16,
         uart_rxd       => UART_TXD,
         uart_txd       => UART_RXD,
+        qspi_dclk      => Flash_1,
+        qspi_ncs       => Flash_4,
+        qspi_data(0)   => Flash_2,
+        qspi_data(1)   => Flash_3,
+        qspi_data(2)   => Flash_6,
+        qspi_data(3)   => Flash_5,
 
         pio_export,
     }
@@ -123,23 +132,26 @@ Component NIOSDuino_Processor
     {
         VHDL
         {
-            component NIOSDuino_Core
+            component NIOSDuINo_Core
             port (
-                clk_in_clk            : in    std_logic                     := '0';             --         clk_in.clk
-                pio_export            : inout std_logic_vector(15 downto 0) := (others => '0'); --        pio_led.export
-                reset_reset_n         : in    std_logic                     := '1';             --          reset.reset_n
-                sdram_addr            : out   std_logic_vector(11 downto 0);                    --          sdram.addr
-                sdram_ba              : out   std_logic_vector(1 downto 0);                     --               .ba
-                sdram_cas_n           : out   std_logic;                                        --               .cas_n
-                sdram_cke             : out   std_logic := '1';  --NOT USED WITH CORE MAX10
-                sdram_cs_n            : out   std_logic := '0';  --NOT USED WITH CORE MAX10
-                sdram_dq              : inout std_logic_vector(15 downto 0) := (others => '0'); --               .dq
-                sdram_dqm             : out   std_logic_vector(1 downto 0);                     --               .dqm
-                sdram_ras_n           : out   std_logic;                                        --               .ras_n
-                sdram_we_n            : out   std_logic;                                        --               .we_n
-                sdram_clk_clk         : out   std_logic;                                        --      sdram_clk.clk
-                uart_rxd              : in    std_logic                     := '0';             --           uart.rxd
-                uart_txd              : out   std_logic                                        -- txd
+                clk_IN_clk            : IN    STD_LOGIC                     := '0';             --         clk_IN.clk
+                pio_export            : INOUT STD_LOGIC_VECTOR(15 downto 0) := (others => '0'); --        pio_led.export
+                reset_reset_n         : IN    STD_LOGIC                     := '1';             --          reset.reset_n
+                sdram_addr            : OUT   STD_LOGIC_VECTOR(11 downto 0);                    --          sdram.addr
+                sdram_ba              : OUT   STD_LOGIC_VECTOR(1 downto 0);                     --               .ba
+                sdram_cas_n           : OUT   STD_LOGIC;                                        --               .cas_n
+                sdram_cke             : OUT   STD_LOGIC := '1';  --NOT USED WITH CORE MAX10
+                sdram_cs_n            : OUT   STD_LOGIC := '0';  --NOT USED WITH CORE MAX10
+                sdram_dq              : INOUT STD_LOGIC_VECTOR(15 downto 0) := (others => '0'); --               .dq
+                sdram_dqm             : OUT   STD_LOGIC_VECTOR(1 downto 0);                     --               .dqm
+                sdram_ras_n           : OUT   STD_LOGIC;                                        --               .ras_n
+                sdram_we_n            : OUT   STD_LOGIC;                                        --               .we_n
+                sdram_clk_clk         : OUT   STD_LOGIC;                                        --      sdram_clk.clk
+                uart_rxd              : IN    STD_LOGIC                     := '0';             --           uart.rxd
+                uart_txd              : OUT   STD_LOGIC;                                        -- txd
+                qspi_dclk             : OUT   STD_LOGIC;                                        -- dclk
+                qspi_ncs              : OUT   STD_LOGIC;                                        -- ncs
+                qspi_data             : INOUT STD_LOGIC_VECTOR(3 downto 0)  := (others => 'X')  -- data
             );
             end component;
         }
@@ -147,9 +159,9 @@ Component NIOSDuino_Processor
     
     VHDL
     {
-        u1: NIOSDuino_Core port map
+        u1: NIOSDuINo_Core port map
         (
-            clk_in_clk            => CLK,
+            clk_IN_clk            => CLK,
             pio_export            => pio_export,
             reset_reset_n         => reset_reset_n,
             sdram_addr            => sdram_addr,
