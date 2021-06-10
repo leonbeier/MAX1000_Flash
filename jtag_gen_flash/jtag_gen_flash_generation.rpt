@@ -1,0 +1,64 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\LeonB\Documents\GitHub\MAX1000_Flash\jtag_gen_flash.qsys --synthesis=VHDL --output-directory=C:\Users\LeonB\Documents\GitHub\MAX1000_Flash\jtag_gen_flash\synthesis --family="MAX 10" --part=10M08SAU169C8G
+Progress: Loading MAX1000_Flash/jtag_gen_flash.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.1]
+Progress: Parameterizing module clk_0
+Progress: Adding intel_generic_serial_flash_interface_top_0 [intel_generic_serial_flash_interface_top 18.1]
+Progress: Parameterizing module intel_generic_serial_flash_interface_top_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
+Progress: Parameterizing module master_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_gen_flash: Generating jtag_gen_flash "jtag_gen_flash" for QUARTUS_SYNTH
+Info: intel_generic_serial_flash_interface_top_0: "jtag_gen_flash" instantiated intel_generic_serial_flash_interface_top "intel_generic_serial_flash_interface_top_0"
+Info: master_0: "jtag_gen_flash" instantiated altera_jtag_avalon_master "master_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "jtag_gen_flash" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "jtag_gen_flash" instantiated altera_reset_controller "rst_controller"
+Info: csr_controller: "intel_generic_serial_flash_interface_top_0" instantiated intel_generic_serial_flash_interface_csr "csr_controller"
+Info: avst_fifo: "Generating: avst_fifo"
+Info: xip_controller: "intel_generic_serial_flash_interface_top_0" instantiated intel_generic_serial_flash_interface_xip "xip_controller"
+Info: xip_addr_adaption: "intel_generic_serial_flash_interface_top_0" instantiated intel_generic_serial_flash_interface_addr "xip_addr_adaption"
+Info: merlin_demultiplexer_0: "intel_generic_serial_flash_interface_top_0" instantiated altera_merlin_demultiplexer "merlin_demultiplexer_0"
+Info: multiplexer: "intel_generic_serial_flash_interface_top_0" instantiated altera_merlin_multiplexer "multiplexer"
+Info: serial_flash_inf_cmd_gen_inst: "intel_generic_serial_flash_interface_top_0" instantiated intel_generic_serial_flash_interface_cmd "serial_flash_inf_cmd_gen_inst"
+Info: qspi_inf_mux: "Generating: qspi_inf_mux"
+Info: inf_sc_fifo_ser_data: "Generating: inf_sc_fifo_ser_data"
+Info: qspi_inf_inst: "intel_generic_serial_flash_interface_top_0" instantiated intel_generic_serial_flash_interface_if_ctrl "qspi_inf_inst"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: master_0_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "master_0_master_translator"
+Info: intel_generic_serial_flash_interface_top_0_avl_csr_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "intel_generic_serial_flash_interface_top_0_avl_csr_translator"
+Info: master_0_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "master_0_master_agent"
+Info: intel_generic_serial_flash_interface_top_0_avl_csr_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "intel_generic_serial_flash_interface_top_0_avl_csr_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
+Info: Reusing file C:/Users/LeonB/Documents/GitHub/MAX1000_Flash/jtag_gen_flash/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/Users/LeonB/Documents/GitHub/MAX1000_Flash/jtag_gen_flash/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file C:/Users/LeonB/Documents/GitHub/MAX1000_Flash/jtag_gen_flash/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/LeonB/Documents/GitHub/MAX1000_Flash/jtag_gen_flash/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avst_fifo: "xip_controller" instantiated intel_generic_serial_flash_interface_xip "avst_fifo"
+Info: qspi_inf_mux: "qspi_inf_inst" instantiated intel_generic_serial_flash_interface_if_ctrl "qspi_inf_mux"
+Info: inf_sc_fifo_ser_data: "qspi_inf_inst" instantiated intel_generic_serial_flash_interface_if_ctrl "inf_sc_fifo_ser_data"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: qspi_inf_mux: "qspi_inf_mux" instantiated altera_merlin_multiplexer "qspi_inf_mux"
+Info: Reusing file C:/Users/LeonB/Documents/GitHub/MAX1000_Flash/jtag_gen_flash/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: jtag_gen_flash: Done "jtag_gen_flash" with 37 modules, 54 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

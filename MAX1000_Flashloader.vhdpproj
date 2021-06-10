@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ProjectRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Header>MAX1000_Flashloader</Header>
+  <Items xsi:type="ProjectFolder">
+    <Header>Generated</Header>
+    <Items xsi:type="ProjectFileVHDL">
+      <Header>MAX1000_Flashloader.vhd</Header>
+    </Items>
+  </Items>
+  <Items xsi:type="ProjectFolder">
+    <Header>Libraries</Header>
+    <Items xsi:type="ProjectFolder">
+      <Header>PLL</Header>
+      <Items xsi:type="ProjectFile">
+        <Header>PLL.qip</Header>
+      </Items>
+      <Items xsi:type="ProjectFileVHDL">
+        <Header>PLL.vhd</Header>
+      </Items>
+    </Items>
+  </Items>
+  <Items xsi:type="ProjectFileVHDP">
+    <Header>Flashloader.vhdp</Header>
+  </Items>
+  <Items xsi:type="ProjectFile">
+    <Header>jtag_gen_flash.qsys</Header>
+  </Items>
+  <Items xsi:type="ProjectFileVHDP">
+    <Header>jtag_gen_flash.qsys.vhdp</Header>
+  </Items>
+  <CruviHSExtensions>
+    <string xsi:nil="true" />
+  </CruviHSExtensions>
+  <CruviLSExtensions>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </CruviLSExtensions>
+  <IOVoltage>0</IOVoltage>
+  <UseShield>false</UseShield>
+</ProjectRoot>

@@ -1,0 +1,12 @@
+Component jtag_gen_flash
+(
+
+			clk_clk        : in    std_logic                    := 'X';             -- clk
+			reset_reset_n  : in    std_logic                    := 'X';             -- reset_n
+			qspi_pins_dclk : out   std_logic;                                       -- dclk
+			qspi_pins_ncs  : out   std_logic;                                       -- ncs
+			qspi_pins_data : inout std_logic_vector(3 downto 0) := (others => 'X')  -- data
+		
+)
+{
+}

@@ -1,0 +1,23 @@
+Main
+(
+    dclk : OUT   STD_LOGIC;
+    ncs  : OUT   STD_LOGIC;
+    data : INOUT STD_LOGIC_VECTOR(3 downto 0);
+)
+{
+    SIGNAL CLK50 : STD_LOGIC := '0';
+    NewComponent PLL
+    (
+        inclk0 => CLK,
+        c0     => CLK50,
+    );
+    
+    NewComponent jtag_gen_flash
+    (
+        clk_clk        => CLK50,
+        reset_reset_n  => '1',
+        qspi_pins_dclk => dclk,
+        qspi_pins_ncs  => ncs,
+        qspi_pins_data => data,
+    );
+}
