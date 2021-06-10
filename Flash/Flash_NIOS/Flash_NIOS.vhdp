@@ -16,11 +16,13 @@ Main
     NIOS_pio_export    : INOUT STD_LOGIC_VECTOR (15 downto 0) := (others => 'X');
     NIOS_uart_rxd      : IN STD_LOGIC := 'X';
     NIOS_uart_txd      : OUT STD_LOGIC;
+    NIOS_Reset         : IN STD_LOGIC := '1';
     
 )
 {
     NewComponent NIOSDuino_Processor
     (
+        Reset         => NIOS_Reset,
         sdram_addr    => NIOS_sdram_addr,
         sdram_ba      => NIOS_sdram_ba,
         sdram_cas_n   => NIOS_sdram_cas_n,

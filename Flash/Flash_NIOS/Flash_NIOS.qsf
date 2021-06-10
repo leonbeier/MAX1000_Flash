@@ -20,6 +20,8 @@ set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
 set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
 set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
+set_global_assignment -name TCL_SCRIPT_FILE Libraries/NIOSDuino/avalon_pwm_hw.tcl
+set_global_assignment -name TCL_SCRIPT_FILE Libraries/NIOSDuino/avalon_pwm_sw.tcl
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 8
 set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE"
 set_global_assignment -name VHDL_FILE Generated/Flash_NIOS.vhd
@@ -91,3 +93,4 @@ set_location_assignment PIN_H10 -to NIOS_pio_export[12]
 set_location_assignment PIN_H13 -to NIOS_pio_export[13]
 set_location_assignment PIN_G12 -to NIOS_pio_export[14]
 set_location_assignment PIN_A8 -to NIOS_pio_export[15]
+set_location_assignment PIN_E6 -to NIOS_Reset
