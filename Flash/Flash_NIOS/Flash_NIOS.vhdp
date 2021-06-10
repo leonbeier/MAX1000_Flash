@@ -1,16 +1,35 @@
 Main
 (
-    led: OUT STD_LOGIC := '0';
+    NIOS_sdram_addr    : OUT STD_LOGIC_VECTOR (11 downto 0);
+    NIOS_sdram_ba      : OUT STD_LOGIC_VECTOR (1 downto 0);
+    NIOS_sdram_cas_n   : OUT STD_LOGIC;
+    NIOS_sdram_cke     : OUT STD_LOGIC;
+    NIOS_sdram_cs_n    : OUT STD_LOGIC;
+    NIOS_sdram_dq      : INOUT STD_LOGIC_VECTOR (15 downto 0) := (others => 'X');
+    NIOS_sdram_dqm     : OUT STD_LOGIC_VECTOR (1 downto 0);
+    NIOS_sdram_ras_n   : OUT STD_LOGIC;
+    NIOS_sdram_we_n    : OUT STD_LOGIC;
+    NIOS_sdram_clk_clk : OUT STD_LOGIC;
+    NIOS_pio_export    : INOUT STD_LOGIC_VECTOR (15 downto 0) := (others => 'X');
+    NIOS_uart_rxd      : IN STD_LOGIC := 'X';
+    NIOS_uart_txd      : OUT STD_LOGIC;
+    
 )
 {
-    Process()
-    {
-        Thread
-        {
-            led <= '0';
-            Wait(250ms);
-            led <= '1';
-            Wait(250ms);
-        }
-    }
+    NewComponent NIOSDuino_Processor
+    (
+        sdram_addr    => NIOS_sdram_addr,
+        sdram_ba      => NIOS_sdram_ba,
+        sdram_cas_n   => NIOS_sdram_cas_n,
+        sdram_cke     => NIOS_sdram_cke,
+        sdram_cs_n    => NIOS_sdram_cs_n,
+        sdram_dq      => NIOS_sdram_dq,
+        sdram_dqm     => NIOS_sdram_dqm,
+        sdram_ras_n   => NIOS_sdram_ras_n,
+        sdram_we_n    => NIOS_sdram_we_n,
+        sdram_clk_clk => NIOS_sdram_clk_clk,
+        pio_export    => NIOS_pio_export,
+        uart_rxd      => NIOS_uart_rxd,
+        uart_txd      => NIOS_uart_txd,
+    );
 }
